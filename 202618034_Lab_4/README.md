@@ -14,9 +14,9 @@ from-scratch linear regression model (no ML libraries — NumPy/pandas only).
 
 ## Results
 
-- Test R²: [FILL IN FROM YOUR OUTPUT]
-- Test RMSE ($): [FILL IN]
-- Test MAE ($): [FILL IN]
+- Test R²: 0.532
+- Test RMSE ($): $60.70
+- Test MAE ($): $236.93
 
 ## Key Findings
 

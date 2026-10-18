@@ -19,8 +19,6 @@ Dataset: **AT&T (ORL) Database of Faces** – 40 subjects × 10 grayscale images
 
 ## Deliverables in this repo
 - `Lab_7.ipynb` – runnable notebook
-- `figures/` – explained variance, eigenfaces, reconstructions, matches, comparison plots
-- `results/` – `ml_comparison_table.csv`, `nn_accuracy_vs_k.csv`, `reconstruction_error.csv`, `storage_comparison.csv`, `summary.md`, …
 
 ## Results and observations
-After running the notebook, paste the contents of `results/summary.md` here (it contains the key numbers and the comparison table), then add your own observations. The notebook's final "Observations and discussion" cell lists the points to check against your numbers.
+

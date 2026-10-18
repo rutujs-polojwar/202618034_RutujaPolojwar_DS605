@@ -20,7 +20,7 @@ Dataset: **AT&T (ORL) Database of Faces** – 40 subjects × 10 grayscale images
 **Constraint:** all PCA/eigenface computation uses NumPy only; scikit-learn is used only in Part D.
 
 ## Deliverables in this repo
-- `DS605_Lab7_PCA_Eigenfaces.ipynb` – runnable notebook
+- `Lab_7.ipynb` – runnable notebook
 - `figures/` – explained variance, eigenfaces, reconstructions, matches, comparison plots
 - `results/` – `ml_comparison_table.csv`, `nn_accuracy_vs_k.csv`, `reconstruction_error.csv`, `storage_comparison.csv`, `summary.md`, …
 

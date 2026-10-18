@@ -1,28 +1,51 @@
 # DS605 Lab 7 – Image Representation, PCA, Eigenfaces and Face Recognition
 
-Dataset: **AT&T (ORL) Database of Faces** – 40 subjects × 10 grayscale images, 112 × 92 px.
+**Dataset:** AT&T (ORL) Database of Faces – 40 subjects × 10 grayscale images, 112 × 92 px (Kaggle `kasikrit/att-database-of-faces`, loaded with `kagglehub`).
+**Constraint:** PCA/eigenfaces use NumPy only (`np.linalg.eigh`, `np.linalg.svd`); scikit-learn is used only in Part D.
 
-## How to run
-1. Download the AT&T/ORL face images and unzip them (e.g. `att_faces/s1/1.pgm … s40/10.pgm`).
-2. Open `DS605_Lab7_PCA_Eigenfaces.ipynb` and set the `path` variable in the first code cell to that folder.
-3. Run all cells. Figures are written to `figures/`, tables to `results/`.
+## Run
 
-`pip install -r requirements.txt`
+```bash
+pip install numpy pandas matplotlib pillow scikit-learn kagglehub jupyter
+jupyter notebook Lab_7.ipynb   # run all cells
+```
 
-## Approach
-| Part | What is done |
-|---|---|
-| **A** Image representation | Images read as 8-bit grayscale matrices, intensities inspected, flattened to 10 304-dim vectors, image matrix `X (400×10304)` + labels. Seeded, per-subject stratified 80/20 split (8 train / 2 test per subject). |
-| **B** PCA / eigenfaces | Mean face from the training set, mean-centering. Principal directions by (1) eigendecomposition of the covariance via the Turk–Pentland Gram-matrix trick (`np.linalg.eigh`) and (2) SVD (`np.linalg.svd`); the two are compared (eigenvalues, directions, orthonormality, `‖Cu−λu‖`, timing). Cumulative explained variance → smallest *k* with ≥ 90 %. Eigenfaces visualised, train/test projected, reduced representation saved (`results/pca_representation.npz`), faces reconstructed, MSE/PSNR and storage compared with raw pixels. |
-| **C** Recognition | Nearest stored training face (Euclidean; cosine as extra) in PCA space vs raw pixels: accuracy, timing, correct/incorrect match figures, accuracy vs *k*, and a 10-split robustness check. |
-| **D** Traditional ML | k-NN, Logistic Regression, linear SVM and RBF SVM on PCA scores. Hyper-parameters (and whether to standardise) tuned by stratified 4-fold CV on the training set for several values of *k*; configuration chosen by CV score (ties → fewer components); test set only used for final reporting. |
+## Approach and results
 
-**Constraint:** all PCA/eigenface computation uses NumPy only; scikit-learn is used only in Part D.
+**A – Representation.** Images read as 8-bit grayscale, flattened to 10,304-dim vectors (scaled to [0,1]) → `X` (400 × 10304). Seeded stratified split: 8 train / 2 test per subject (320 / 80).
 
-## Deliverables in this repo
-- `DS605_Lab7_PCA_Eigenfaces.ipynb` – runnable notebook
-- `figures/` – explained variance, eigenfaces, reconstructions, matches, comparison plots
-- `results/` – `ml_comparison_table.csv`, `nn_accuracy_vs_k.csv`, `reconstruction_error.csv`, `storage_comparison.csv`, `summary.md`, …
+**B – PCA.** Mean face and centering from the training set only. Covariance eigendecomposition (Gram-matrix trick) and SVD agree: max eigenvalue difference 1.3e-13, |cos| of top-50 directions = 1.0.
 
-## Results and observations
-After running the notebook, paste the contents of `results/summary.md` here (it contains the key numbers and the comparison table), then add your own observations. The notebook's final "Observations and discussion" cell lists the points to check against your numbers.
+- **k = 100** components keep ≥ 90 % variance (95 %: 164, 99 %: 267); PC1 = 17.7 %.
+- Reconstruction of test faces at k = 100: PSNR 23.4 dB (k = 20: 21.1 dB, k = 319: 24.6 dB).
+- Storage (320 faces, float64): pixels 26.4 MB vs PCA 8.6 MB incl. basis (3.1×); per image 10,304 → 100 numbers (103×). The saving grows with dataset size (10,000 faces: ≈ 50×).
+
+**C – Nearest-neighbour recognition.**
+
+| Representation        | Dims   | Accuracy        | Match time |
+| --------------------- | ------ | --------------- | ---------- |
+| Raw pixels, Euclidean | 10,304 | 96.25 % (77/80) | 260 ms     |
+| PCA k=100, Euclidean  | 100    | 96.25 % (77/80) | 5.4 ms     |
+| PCA k=100, cosine     | 100    | 96.25 %         | –          |
+
+Raw and PCA matching give identical predictions; PCA is ~48× faster. Accuracy peaks at 97.5 % with only 10–15 components. Over 10 random splits: raw 97.9 ± 1.2 %, PCA 98.1 ± 1.4 %.
+
+**D – Traditional ML on PCA features.** Hyper-parameters and k tuned by 4-fold CV on the training set; final choice by CV score (ties → fewer components).
+
+| Method                                   | Features | CV acc      | Test acc    |
+| ---------------------------------------- | -------- | ----------- | ----------- |
+| Raw pixels + 1-NN                        | 10,304   | –           | 96.25 %     |
+| PCA(k=100) + 1-NN                        | 100      | –           | 96.25 %     |
+| PCA(k=100) + KNN                         | 100      | 97.19 %     | 96.25 %     |
+| PCA(k=100) + Logistic Regression (C=100) | 100      | 98.75 %     | 97.50 %     |
+| PCA(k=120) + SVM RBF (C=10)              | 120      | 98.44 %     | 97.50 %     |
+| **PCA(k=60) + SVM linear (C=0.1)**       | **60**   | **98.75 %** | **97.50 %** |
+
+## Observations
+
+1. Faces are highly compressible: 100 of 319 components hold 90 % variance, and ~10 are enough to reach ≈ 96–97 % accuracy.
+2. Covariance and SVD give the same eigenvalues and directions (up to sign).
+3. PCA matches raw-pixel accuracy at 1/100 of the dimensionality and ~48× faster.
+4. Logistic Regression and SVMs score 97.5 % vs 96.25 % for KNN/nearest-neighbour, with higher CV accuracy. This is one test image out of 80, within the split-to-split noise (~1.2–1.4 %), so all methods perform similarly on ORL.
+5. The selected model (linear SVM, 60 components, 2 errors out of 80) is the most compact, a 172× reduction from raw pixels. Standardising the PCA scores was never chosen, since it inflates noisy low-variance components.
+6. Limitations: ORL is small and controlled, and PCA is linear and sensitive to pose and lighting.

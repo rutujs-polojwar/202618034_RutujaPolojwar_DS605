@@ -4,10 +4,8 @@ Dataset: **AT&T (ORL) Database of Faces** – 40 subjects × 10 grayscale images
 
 ## How to run
 1. Download the AT&T/ORL face images and unzip them (e.g. `att_faces/s1/1.pgm … s40/10.pgm`).
-2. Open `DS605_Lab7_PCA_Eigenfaces.ipynb` and set the `path` variable in the first code cell to that folder.
+2. Open `Lab_7.ipynb` and set the `path` variable in the first code cell to that folder.
 3. Run all cells. Figures are written to `figures/`, tables to `results/`.
-
-`pip install -r requirements.txt`
 
 ## Approach
 | Part | What is done |

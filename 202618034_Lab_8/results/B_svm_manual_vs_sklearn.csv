@@ -1,0 +1,3 @@
+model,w_variance,w_skewness,bias,||w||,margin_width,primal_objective,train_acc,test_acc
+manual,-1.8166,-1.1281,-0.2673,2.1384,0.9353,313.2126,0.8769,0.8727
+sklearn,-2.0093,-1.255,-0.2211,2.369,0.8442,311.9589,0.8806,0.8764

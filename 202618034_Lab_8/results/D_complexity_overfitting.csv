@@ -1,0 +1,19 @@
+model,setting,train_acc,test_acc,complexity,gap(train-test)
+Manual DT,max_depth=1,0.8423,0.8291,2 leaves,0.0132
+Manual DT,max_depth=2,0.9088,0.8909,4 leaves,0.0179
+Manual DT,max_depth=3,0.9435,0.9236,8 leaves,0.0198
+Manual DT,max_depth=4,0.9727,0.9709,14 leaves,0.0017
+Manual DT,max_depth=5,0.9945,0.9927,20 leaves,0.0018
+Manual DT,max_depth=7,1.0,0.9927,25 leaves,0.0073
+Manual DT,max_depth=10,1.0,0.9927,25 leaves,0.0073
+Manual DT,max_depth=None,1.0,0.9927,25 leaves,0.0073
+Manual Linear SVM,C=0.01,0.9781,0.9709,5 params,0.0072
+Manual Linear SVM,C=0.1,0.9854,0.9709,5 params,0.0145
+Manual Linear SVM,C=1,0.9854,0.9709,5 params,0.0145
+Manual Linear SVM,C=10,0.9854,0.9709,5 params,0.0145
+Manual Linear SVM,C=100,0.9854,0.9709,5 params,0.0145
+RBF SVM,gamma=0.01,0.9799,0.9709,311 SVs,0.009
+RBF SVM,gamma=0.1,0.9964,0.9964,118 SVs,-0.0
+RBF SVM,gamma=1,1.0,1.0,105 SVs,0.0
+RBF SVM,gamma=10,1.0,1.0,561 SVs,0.0
+RBF SVM,gamma=50,1.0,0.9818,982 SVs,0.0182

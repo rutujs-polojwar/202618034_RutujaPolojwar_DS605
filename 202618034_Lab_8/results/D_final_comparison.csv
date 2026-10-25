@@ -1,0 +1,6 @@
+model,train_acc,test_acc,precision,recall,f1,train_time_s,predict_time_ms,complexity
+Manual Decision Tree,0.9945,0.9927,0.9839,1.0,0.9919,0.0184,0.1928,39 nodes
+Sklearn Decision Tree,0.9945,0.9927,0.9839,1.0,0.9919,0.0043,0.2569,39 nodes
+Manual Linear SVM,0.9854,0.9709,0.9385,1.0,0.9683,0.2931,0.0247,"5 params (w,b)"
+Sklearn Linear SVM,0.9936,0.9855,0.9683,1.0,0.9839,0.0152,0.5568,"5 params (w,b); 36 SVs"
+Sklearn RBF SVM,1.0,1.0,1.0,1.0,1.0,0.0071,2.7669,91 support vectors

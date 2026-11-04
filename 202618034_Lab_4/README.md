@@ -1,4 +1,4 @@
-# 🏠 NYC Airbnb Price Prediction – End-to-End Machine Learning Project
+# NYC Airbnb Price Prediction – End-to-End Machine Learning Project
 
 DS605 – Fundamentals of Machine Learning · Lab Assignment 4
 
@@ -86,7 +86,6 @@ The two tree ensembles clearly beat the linear models; Hist Gradient Boosting an
 ### Application screenshots
 
 ![](images/app_screenshot_estimate.png)
-![](images/app_screenshot_performance.png)
 
 ## 4. Limitations
 

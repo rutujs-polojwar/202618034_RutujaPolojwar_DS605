@@ -6,7 +6,7 @@ An end-to-end ML workflow on the Kaggle **New York City Airbnb Open Data (`AB_NY
 data cleaning → EDA → feature engineering/selection → model comparison → hyper-parameter tuning →
 evaluation (incl. over-fitting checks) → saved pipeline → **Streamlit app** that estimates the nightly price of a listing.
 
-**Deployed app:** _paste your Streamlit Community Cloud link here_
+**Deployed app:** [Airbnb_price_predict](https://202618034lab4airbnbpricepredict.streamlit.app/#estimate)
 
 ---
 

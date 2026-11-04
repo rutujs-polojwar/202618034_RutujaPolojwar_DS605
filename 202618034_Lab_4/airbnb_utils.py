@@ -16,14 +16,7 @@ from typing import Dict, List, Optional
 
 import numpy as np
 import pandas as pd
-from scipy.stats import loguniform, randint
 from sklearn.compose import ColumnTransformer, TransformedTargetRegressor
-from sklearn.ensemble import HistGradientBoostingRegressor, RandomForestRegressor
-from sklearn.feature_selection import mutual_info_regression
-from sklearn.inspection import permutation_importance
-from sklearn.linear_model import LinearRegression, Ridge
-from sklearn.metrics import make_scorer, mean_absolute_error, mean_squared_error, r2_score
-from sklearn.model_selection import RandomizedSearchCV, cross_validate
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import FunctionTransformer, OneHotEncoder, StandardScaler
 
@@ -157,6 +150,7 @@ def select_features_by_mi(X_raw: pd.DataFrame, y_log, threshold: float = 0.001,
     Returns ``(selected_features, mi_series)``; features below ``threshold`` are
     dropped as carrying (almost) no signal.
     """
+    from sklearn.feature_selection import mutual_info_regression
     feats = add_features(X_raw)[NUM_FEATURES]
     y_log = np.asarray(y_log)
     if len(feats) > sample:
@@ -199,6 +193,8 @@ def make_model_pipeline(regressor, num_features: Optional[List[str]] = None):
 
 
 def get_candidates(random_state: int = RANDOM_STATE, n_jobs: int = -1) -> Dict[str, object]:
+    from sklearn.ensemble import HistGradientBoostingRegressor, RandomForestRegressor
+    from sklearn.linear_model import LinearRegression, Ridge
     return {
         "Linear Regression": LinearRegression(),
         "Ridge": Ridge(alpha=1.0, random_state=random_state),
@@ -213,6 +209,7 @@ def get_candidates(random_state: int = RANDOM_STATE, n_jobs: int = -1) -> Dict[s
 
 def get_param_space(name: str) -> dict:
     """Randomised-search space (keys are relative to the regressor)."""
+    from scipy.stats import loguniform, randint
     if name == "Ridge":
         return {"alpha": loguniform(1e-2, 1e2)}
     if name == "Random Forest":
@@ -234,12 +231,32 @@ def _rmsle(y_true, y_pred) -> float:
     return float(np.sqrt(np.mean((np.log1p(y_pred) - np.log1p(np.asarray(y_true, float))) ** 2)))
 
 
-RMSLE_SCORER = make_scorer(_rmsle, greater_is_better=False)
-CV_SCORING = {"rmsle": RMSLE_SCORER, "mae": "neg_mean_absolute_error", "r2": "r2"}
+def _get_rmsle_scorer():
+    from sklearn.metrics import make_scorer
+    return make_scorer(_rmsle, greater_is_better=False)
+
+
+_CV_SCORING = None
+
+
+def get_cv_scoring():
+    global _CV_SCORING
+    if _CV_SCORING is None:
+        _CV_SCORING = {"rmsle": _get_rmsle_scorer(), "mae": "neg_mean_absolute_error", "r2": "r2"}
+    return _CV_SCORING
+
+
+def __getattr__(name: str):
+    if name == "RMSLE_SCORER":
+        return _get_rmsle_scorer()
+    if name == "CV_SCORING":
+        return get_cv_scoring()
+    raise AttributeError(f"module {__name__!r} has no attribute {name!r}")
 
 
 def regression_report(y_true, y_pred) -> Dict[str, float]:
     """RMSE / MAE / R^2 in dollars, plus log-scale and relative errors."""
+    from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
     y_true = np.asarray(y_true, float)
     y_pred = np.maximum(np.asarray(y_pred, float), 0)
     return {
@@ -255,10 +272,12 @@ def regression_report(y_true, y_pred) -> Dict[str, float]:
 def compare_models(X, y, num_features=None, cv: int = 3, n_jobs: int = -1,
                    candidates: Optional[Dict[str, object]] = None) -> pd.DataFrame:
     """Cross-validate every candidate; train scores expose over-fitting."""
+    from sklearn.model_selection import cross_validate
     rows = []
+    scoring = get_cv_scoring()
     for name, reg in (candidates or get_candidates()).items():
         res = cross_validate(make_model_pipeline(reg, num_features), X, y, cv=cv,
-                             scoring=CV_SCORING, return_train_score=True,
+                             scoring=scoring, return_train_score=True,
                              n_jobs=1 if name == "Random Forest" else n_jobs)
         rows.append({
             "model": name,
@@ -273,24 +292,26 @@ def compare_models(X, y, num_features=None, cv: int = 3, n_jobs: int = -1,
 
 
 def tune_model(name: str, X, y, num_features=None, n_iter: int = 20, cv: int = 3,
-               n_jobs: int = -1) -> RandomizedSearchCV:
+               n_jobs: int = -1):
     """Randomised hyper-parameter search optimising cross-validated RMSLE."""
+    from sklearn.model_selection import RandomizedSearchCV
     reg = get_candidates()[name]
     if name == "Random Forest":          # forests are slow to fit: cap the search
         n_iter = min(n_iter, 10)
     space = {f"regressor__model__{k}": v for k, v in get_param_space(name).items()}
     search = RandomizedSearchCV(
         make_model_pipeline(reg, num_features), space, n_iter=n_iter, cv=cv,
-        scoring=RMSLE_SCORER, n_jobs=1 if name == "Random Forest" else n_jobs,
+        scoring=_get_rmsle_scorer(), n_jobs=1 if name == "Random Forest" else n_jobs,
         random_state=RANDOM_STATE, refit=True, verbose=1)
     return search.fit(X, y)
 
 
 def raw_feature_importance(model, X, y, n_rows: int = 3000, n_repeats: int = 5) -> pd.Series:
     """Permutation importance on the *raw* input columns (increase in RMSLE)."""
+    from sklearn.inspection import permutation_importance
     idx = np.random.RandomState(RANDOM_STATE).choice(len(X), min(n_rows, len(X)), replace=False)
     res = permutation_importance(model, X.iloc[idx][RAW_FEATURES], np.asarray(y)[idx],
-                                 scoring=RMSLE_SCORER, n_repeats=n_repeats,
+                                 scoring=_get_rmsle_scorer(), n_repeats=n_repeats,
                                  random_state=RANDOM_STATE, n_jobs=1)
     return pd.Series(res.importances_mean, index=RAW_FEATURES).sort_values(ascending=False)
 

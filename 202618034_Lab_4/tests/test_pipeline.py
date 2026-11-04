@@ -1,5 +1,6 @@
 """Basic tests. Run with:  pytest -q   (model tests are skipped until a model is trained)."""
 import json
+import sys
 from pathlib import Path
 
 import joblib
@@ -7,9 +8,11 @@ import numpy as np
 import pandas as pd
 import pytest
 
-import airbnb_utils as U
-
 ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+import airbnb_utils as U
 MODEL = ROOT / "models" / "airbnb_price_pipeline.joblib"
 META = ROOT / "models" / "metadata.json"
 needs_model = pytest.mark.skipif(not MODEL.exists(), reason="train the model first")

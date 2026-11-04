@@ -1,0 +1,1455 @@
+{
+  "trained_at_utc": "2026-11-04T05:45:38+00:00",
+  "sklearn_version": "1.8.0",
+  "best_model": "Hist Gradient Boosting",
+  "best_params": {
+    "l2_regularization": 0.3113095956122124,
+    "learning_rate": 0.05620190412589549,
+    "max_depth": 10,
+    "max_iter": 606,
+    "max_leaf_nodes": 31,
+    "min_samples_leaf": 56
+  },
+  "selected_numeric_features": [
+    "latitude",
+    "longitude",
+    "dist_times_sq_km",
+    "dist_wall_st_km",
+    "dist_central_park_km",
+    "log_min_nights",
+    "log_reviews",
+    "reviews_per_month",
+    "log_host_listings",
+    "host_multi",
+    "availability_365",
+    "avail_zero",
+    "has_reviews",
+    "name_len",
+    "name_words",
+    "has_premium_word",
+    "has_budget_word"
+  ],
+  "train_metrics": {
+    "rmse": 81.86331955824247,
+    "mae": 41.89848279933463,
+    "r2": 0.5052072871270656,
+    "rmsle": 0.36602884236455346,
+    "r2_log": 0.6928720108293415,
+    "median_ape_pct": 21.480885752390854
+  },
+  "test_metrics": {
+    "rmse": 86.41842362645241,
+    "mae": 44.646938471639125,
+    "r2": 0.4647455725378452,
+    "rmsle": 0.3885362952973627,
+    "r2_log": 0.6611634785812849,
+    "median_ape_pct": 22.54990731961385
+  },
+  "model_comparison": [
+    {
+      "model": "Hist Gradient Boosting",
+      "cv_rmsle": 0.399185335,
+      "train_rmsle": 0.3593616919,
+      "cv_mae": 45.3954143504,
+      "train_mae": 41.398621137,
+      "cv_r2": 0.4386778815,
+      "train_r2": 0.5199924835,
+      "fit_time_s": 9.471165657,
+      "overfit_gap_rmsle": 0.0398236431
+    },
+    {
+      "model": "Random Forest",
+      "cv_rmsle": 0.4006112428,
+      "train_rmsle": 0.32897475,
+      "cv_mae": 45.4415494738,
+      "train_mae": 37.7718397595,
+      "cv_r2": 0.4241375918,
+      "train_r2": 0.5497648064,
+      "fit_time_s": 1.5756946405,
+      "overfit_gap_rmsle": 0.0716364928
+    },
+    {
+      "model": "Ridge",
+      "cv_rmsle": 0.4215680527,
+      "train_rmsle": 0.419316572,
+      "cv_mae": 48.1929259916,
+      "train_mae": 47.9906462959,
+      "cv_r2": 0.3689530052,
+      "train_r2": 0.3721511025,
+      "fit_time_s": 0.5338630676,
+      "overfit_gap_rmsle": 0.0022514807
+    },
+    {
+      "model": "Linear Regression",
+      "cv_rmsle": 0.4216085556,
+      "train_rmsle": 0.4192911184,
+      "cv_mae": 48.1979416364,
+      "train_mae": 47.9873767161,
+      "cv_r2": 0.3690922859,
+      "train_r2": 0.3723746299,
+      "fit_time_s": 0.9672955672,
+      "overfit_gap_rmsle": 0.0023174372
+    }
+  ],
+  "cleaning": {
+    "rows_raw": 48895,
+    "duplicates_dropped": 0,
+    "price_zero_or_below": 11,
+    "price_below_min": 11,
+    "price_above_cap": 239,
+    "min_price": 10.0,
+    "price_cap": 1000.0,
+    "upper_quantile": 0.995,
+    "rows_clean": 48645
+  },
+  "neighbourhoods": {
+    "Bronx": {
+      "Allerton": {
+        "lat": 40.86686,
+        "lon": -73.85996,
+        "median_price": 66.5,
+        "n": 42
+      },
+      "Baychester": {
+        "lat": 40.87223,
+        "lon": -73.84301,
+        "median_price": 75.0,
+        "n": 7
+      },
+      "Belmont": {
+        "lat": 40.85471,
+        "lon": -73.88593,
+        "median_price": 52.5,
+        "n": 24
+      },
+      "Bronxdale": {
+        "lat": 40.85464,
+        "lon": -73.86633,
+        "median_price": 50.0,
+        "n": 19
+      },
+      "Castle Hill": {
+        "lat": 40.81576,
+        "lon": -73.84669,
+        "median_price": 39.0,
+        "n": 9
+      },
+      "City Island": {
+        "lat": 40.84922,
+        "lon": -73.78777,
+        "median_price": 97.5,
+        "n": 18
+      },
+      "Claremont Village": {
+        "lat": 40.8391,
+        "lon": -73.91049,
+        "median_price": 68.5,
+        "n": 28
+      },
+      "Clason Point": {
+        "lat": 40.81225,
+        "lon": -73.85371,
+        "median_price": 80.0,
+        "n": 21
+      },
+      "Co-op City": {
+        "lat": 40.86481,
+        "lon": -73.82324,
+        "median_price": 77.5,
+        "n": 2
+      },
+      "Concourse": {
+        "lat": 40.82734,
+        "lon": -73.92542,
+        "median_price": 81.0,
+        "n": 50
+      },
+      "Concourse Village": {
+        "lat": 40.83062,
+        "lon": -73.91836,
+        "median_price": 65.0,
+        "n": 32
+      },
+      "East Morrisania": {
+        "lat": 40.83026,
+        "lon": -73.8879,
+        "median_price": 75.0,
+        "n": 9
+      },
+      "Eastchester": {
+        "lat": 40.88057,
+        "lon": -73.83456,
+        "median_price": 75.0,
+        "n": 13
+      },
+      "Edenwald": {
+        "lat": 40.88805,
+        "lon": -73.83517,
+        "median_price": 75.0,
+        "n": 13
+      },
+      "Fieldston": {
+        "lat": 40.8915,
+        "lon": -73.90177,
+        "median_price": 67.0,
+        "n": 12
+      },
+      "Fordham": {
+        "lat": 40.86355,
+        "lon": -73.8934,
+        "median_price": 60.0,
+        "n": 63
+      },
+      "Highbridge": {
+        "lat": 40.83454,
+        "lon": -73.92779,
+        "median_price": 70.0,
+        "n": 27
+      },
+      "Hunts Point": {
+        "lat": 40.8141,
+        "lon": -73.88834,
+        "median_price": 40.0,
+        "n": 18
+      },
+      "Kingsbridge": {
+        "lat": 40.87898,
+        "lon": -73.90156,
+        "median_price": 70.0,
+        "n": 70
+      },
+      "Longwood": {
+        "lat": 40.82156,
+        "lon": -73.90297,
+        "median_price": 75.0,
+        "n": 62
+      },
+      "Melrose": {
+        "lat": 40.82241,
+        "lon": -73.91587,
+        "median_price": 74.5,
+        "n": 10
+      },
+      "Morris Heights": {
+        "lat": 40.84862,
+        "lon": -73.91641,
+        "median_price": 51.0,
+        "n": 17
+      },
+      "Morris Park": {
+        "lat": 40.85322,
+        "lon": -73.85585,
+        "median_price": 60.0,
+        "n": 15
+      },
+      "Morrisania": {
+        "lat": 40.82855,
+        "lon": -73.90769,
+        "median_price": 73.5,
+        "n": 18
+      },
+      "Mott Haven": {
+        "lat": 40.81085,
+        "lon": -73.92037,
+        "median_price": 74.0,
+        "n": 60
+      },
+      "Mount Eden": {
+        "lat": 40.84141,
+        "lon": -73.9155,
+        "median_price": 45.5,
+        "n": 6
+      },
+      "Mount Hope": {
+        "lat": 40.84851,
+        "lon": -73.90442,
+        "median_price": 60.0,
+        "n": 20
+      },
+      "North Riverdale": {
+        "lat": 40.90769,
+        "lon": -73.89776,
+        "median_price": 65.0,
+        "n": 10
+      },
+      "Norwood": {
+        "lat": 40.87491,
+        "lon": -73.8797,
+        "median_price": 58.0,
+        "n": 31
+      },
+      "Olinville": {
+        "lat": 40.88446,
+        "lon": -73.86472,
+        "median_price": 53.0,
+        "n": 4
+      },
+      "Parkchester": {
+        "lat": 40.83645,
+        "lon": -73.85954,
+        "median_price": 55.0,
+        "n": 39
+      },
+      "Pelham Bay": {
+        "lat": 40.84752,
+        "lon": -73.83095,
+        "median_price": 89.0,
+        "n": 17
+      },
+      "Pelham Gardens": {
+        "lat": 40.86368,
+        "lon": -73.8429,
+        "median_price": 75.0,
+        "n": 28
+      },
+      "Port Morris": {
+        "lat": 40.80822,
+        "lon": -73.93002,
+        "median_price": 62.5,
+        "n": 46
+      },
+      "Riverdale": {
+        "lat": 40.88551,
+        "lon": -73.91148,
+        "median_price": 124.5,
+        "n": 10
+      },
+      "Schuylerville": {
+        "lat": 40.83647,
+        "lon": -73.83369,
+        "median_price": 65.0,
+        "n": 13
+      },
+      "Soundview": {
+        "lat": 40.82739,
+        "lon": -73.86639,
+        "median_price": 49.0,
+        "n": 15
+      },
+      "Spuyten Duyvil": {
+        "lat": 40.88065,
+        "lon": -73.91743,
+        "median_price": 99.5,
+        "n": 4
+      },
+      "Throgs Neck": {
+        "lat": 40.82653,
+        "lon": -73.82099,
+        "median_price": 74.5,
+        "n": 24
+      },
+      "Tremont": {
+        "lat": 40.84546,
+        "lon": -73.89013,
+        "median_price": 41.0,
+        "n": 11
+      },
+      "Unionport": {
+        "lat": 40.82848,
+        "lon": -73.85203,
+        "median_price": 90.0,
+        "n": 7
+      },
+      "University Heights": {
+        "lat": 40.85711,
+        "lon": -73.90946,
+        "median_price": 55.0,
+        "n": 21
+      },
+      "Van Nest": {
+        "lat": 40.8423,
+        "lon": -73.86818,
+        "median_price": 50.0,
+        "n": 11
+      },
+      "Wakefield": {
+        "lat": 40.89378,
+        "lon": -73.85377,
+        "median_price": 60.0,
+        "n": 50
+      },
+      "West Farms": {
+        "lat": 40.84135,
+        "lon": -73.87846,
+        "median_price": 122.0,
+        "n": 2
+      },
+      "Westchester Square": {
+        "lat": 40.83917,
+        "lon": -73.84742,
+        "median_price": 67.5,
+        "n": 10
+      },
+      "Williamsbridge": {
+        "lat": 40.87884,
+        "lon": -73.86113,
+        "median_price": 64.0,
+        "n": 40
+      },
+      "Woodlawn": {
+        "lat": 40.89785,
+        "lon": -73.86902,
+        "median_price": 68.0,
+        "n": 11
+      }
+    },
+    "Brooklyn": {
+      "Bath Beach": {
+        "lat": 40.60444,
+        "lon": -74.00428,
+        "median_price": 69.0,
+        "n": 17
+      },
+      "Bay Ridge": {
+        "lat": 40.6327,
+        "lon": -74.02626,
+        "median_price": 85.0,
+        "n": 139
+      },
+      "Bedford-Stuyvesant": {
+        "lat": 40.68682,
+        "lon": -73.94152,
+        "median_price": 80.0,
+        "n": 3700
+      },
+      "Bensonhurst": {
+        "lat": 40.61203,
+        "lon": -73.99624,
+        "median_price": 75.0,
+        "n": 75
+      },
+      "Bergen Beach": {
+        "lat": 40.62324,
+        "lon": -73.91016,
+        "median_price": 96.0,
+        "n": 10
+      },
+      "Boerum Hill": {
+        "lat": 40.68614,
+        "lon": -73.98574,
+        "median_price": 150.0,
+        "n": 177
+      },
+      "Borough Park": {
+        "lat": 40.63891,
+        "lon": -73.99729,
+        "median_price": 53.5,
+        "n": 136
+      },
+      "Brighton Beach": {
+        "lat": 40.57823,
+        "lon": -73.96078,
+        "median_price": 84.5,
+        "n": 74
+      },
+      "Brooklyn Heights": {
+        "lat": 40.69432,
+        "lon": -73.99381,
+        "median_price": 150.0,
+        "n": 152
+      },
+      "Brownsville": {
+        "lat": 40.66399,
+        "lon": -73.91457,
+        "median_price": 62.0,
+        "n": 61
+      },
+      "Bushwick": {
+        "lat": 40.69793,
+        "lon": -73.9208,
+        "median_price": 65.0,
+        "n": 2461
+      },
+      "Canarsie": {
+        "lat": 40.63895,
+        "lon": -73.90081,
+        "median_price": 85.0,
+        "n": 147
+      },
+      "Carroll Gardens": {
+        "lat": 40.68121,
+        "lon": -73.99606,
+        "median_price": 150.0,
+        "n": 232
+      },
+      "Clinton Hill": {
+        "lat": 40.68717,
+        "lon": -73.96461,
+        "median_price": 120.0,
+        "n": 569
+      },
+      "Cobble Hill": {
+        "lat": 40.68713,
+        "lon": -73.99559,
+        "median_price": 154.0,
+        "n": 98
+      },
+      "Columbia St": {
+        "lat": 40.68491,
+        "lon": -74.00228,
+        "median_price": 130.0,
+        "n": 41
+      },
+      "Coney Island": {
+        "lat": 40.57582,
+        "lon": -73.98576,
+        "median_price": 100.0,
+        "n": 17
+      },
+      "Crown Heights": {
+        "lat": 40.67296,
+        "lon": -73.94917,
+        "median_price": 85.0,
+        "n": 1561
+      },
+      "Cypress Hills": {
+        "lat": 40.68189,
+        "lon": -73.88294,
+        "median_price": 68.0,
+        "n": 134
+      },
+      "DUMBO": {
+        "lat": 40.70316,
+        "lon": -73.98763,
+        "median_price": 189.0,
+        "n": 36
+      },
+      "Downtown Brooklyn": {
+        "lat": 40.69467,
+        "lon": -73.98444,
+        "median_price": 135.0,
+        "n": 83
+      },
+      "Dyker Heights": {
+        "lat": 40.62523,
+        "lon": -74.0098,
+        "median_price": 82.5,
+        "n": 12
+      },
+      "East Flatbush": {
+        "lat": 40.64991,
+        "lon": -73.94257,
+        "median_price": 75.0,
+        "n": 499
+      },
+      "East New York": {
+        "lat": 40.66897,
+        "lon": -73.8869,
+        "median_price": 75.0,
+        "n": 218
+      },
+      "Flatbush": {
+        "lat": 40.64569,
+        "lon": -73.96111,
+        "median_price": 72.0,
+        "n": 620
+      },
+      "Flatlands": {
+        "lat": 40.62604,
+        "lon": -73.93198,
+        "median_price": 85.0,
+        "n": 82
+      },
+      "Fort Greene": {
+        "lat": 40.68914,
+        "lon": -73.97367,
+        "median_price": 130.0,
+        "n": 488
+      },
+      "Fort Hamilton": {
+        "lat": 40.61859,
+        "lon": -74.0319,
+        "median_price": 90.0,
+        "n": 55
+      },
+      "Gowanus": {
+        "lat": 40.67776,
+        "lon": -73.98919,
+        "median_price": 127.0,
+        "n": 246
+      },
+      "Gravesend": {
+        "lat": 40.59596,
+        "lon": -73.97472,
+        "median_price": 70.0,
+        "n": 68
+      },
+      "Greenpoint": {
+        "lat": 40.72714,
+        "lon": -73.95221,
+        "median_price": 119.0,
+        "n": 1113
+      },
+      "Kensington": {
+        "lat": 40.64265,
+        "lon": -73.97487,
+        "median_price": 70.0,
+        "n": 175
+      },
+      "Manhattan Beach": {
+        "lat": 40.57869,
+        "lon": -73.94674,
+        "median_price": 112.0,
+        "n": 8
+      },
+      "Midwood": {
+        "lat": 40.62017,
+        "lon": -73.96029,
+        "median_price": 75.0,
+        "n": 109
+      },
+      "Mill Basin": {
+        "lat": 40.61141,
+        "lon": -73.91757,
+        "median_price": 167.5,
+        "n": 4
+      },
+      "Navy Yard": {
+        "lat": 40.69845,
+        "lon": -73.97476,
+        "median_price": 150.0,
+        "n": 14
+      },
+      "Park Slope": {
+        "lat": 40.67407,
+        "lon": -73.97871,
+        "median_price": 145.0,
+        "n": 505
+      },
+      "Prospect Heights": {
+        "lat": 40.67778,
+        "lon": -73.96737,
+        "median_price": 120.5,
+        "n": 352
+      },
+      "Prospect-Lefferts Gardens": {
+        "lat": 40.65952,
+        "lon": -73.9574,
+        "median_price": 80.0,
+        "n": 533
+      },
+      "Red Hook": {
+        "lat": 40.67748,
+        "lon": -74.00993,
+        "median_price": 117.0,
+        "n": 79
+      },
+      "Sea Gate": {
+        "lat": 40.57774,
+        "lon": -74.01012,
+        "median_price": 99.0,
+        "n": 5
+      },
+      "Sheepshead Bay": {
+        "lat": 40.5967,
+        "lon": -73.95389,
+        "median_price": 65.0,
+        "n": 163
+      },
+      "South Slope": {
+        "lat": 40.66491,
+        "lon": -73.98578,
+        "median_price": 135.0,
+        "n": 284
+      },
+      "Sunset Park": {
+        "lat": 40.65146,
+        "lon": -74.00255,
+        "median_price": 80.0,
+        "n": 388
+      },
+      "Vinegar Hill": {
+        "lat": 40.7015,
+        "lon": -73.98335,
+        "median_price": 175.0,
+        "n": 34
+      },
+      "Williamsburg": {
+        "lat": 40.71257,
+        "lon": -73.95292,
+        "median_price": 105.0,
+        "n": 3910
+      },
+      "Windsor Terrace": {
+        "lat": 40.65494,
+        "lon": -73.97801,
+        "median_price": 123.0,
+        "n": 157
+      }
+    },
+    "Manhattan": {
+      "Battery Park City": {
+        "lat": 40.7101,
+        "lon": -74.01679,
+        "median_price": 187.5,
+        "n": 68
+      },
+      "Chelsea": {
+        "lat": 40.74441,
+        "lon": -73.9978,
+        "median_price": 199.0,
+        "n": 1100
+      },
+      "Chinatown": {
+        "lat": 40.71565,
+        "lon": -73.99312,
+        "median_price": 129.0,
+        "n": 367
+      },
+      "Civic Center": {
+        "lat": 40.71329,
+        "lon": -74.0045,
+        "median_price": 169.0,
+        "n": 52
+      },
+      "East Harlem": {
+        "lat": 40.79583,
+        "lon": -73.94202,
+        "median_price": 99.0,
+        "n": 1113
+      },
+      "East Village": {
+        "lat": 40.72685,
+        "lon": -73.98389,
+        "median_price": 150.0,
+        "n": 1841
+      },
+      "Financial District": {
+        "lat": 40.70688,
+        "lon": -74.00911,
+        "median_price": 200.0,
+        "n": 742
+      },
+      "Flatiron District": {
+        "lat": 40.74107,
+        "lon": -73.98808,
+        "median_price": 223.0,
+        "n": 76
+      },
+      "Gramercy": {
+        "lat": 40.73571,
+        "lon": -73.98414,
+        "median_price": 160.0,
+        "n": 332
+      },
+      "Greenwich Village": {
+        "lat": 40.7298,
+        "lon": -73.99934,
+        "median_price": 196.0,
+        "n": 385
+      },
+      "Harlem": {
+        "lat": 40.81669,
+        "lon": -73.94785,
+        "median_price": 89.0,
+        "n": 2653
+      },
+      "Hell's Kitchen": {
+        "lat": 40.76245,
+        "lon": -73.99122,
+        "median_price": 166.0,
+        "n": 1951
+      },
+      "Inwood": {
+        "lat": 40.86521,
+        "lon": -73.92572,
+        "median_price": 77.5,
+        "n": 252
+      },
+      "Kips Bay": {
+        "lat": 40.74175,
+        "lon": -73.9797,
+        "median_price": 150.0,
+        "n": 467
+      },
+      "Little Italy": {
+        "lat": 40.71892,
+        "lon": -73.99729,
+        "median_price": 150.0,
+        "n": 120
+      },
+      "Lower East Side": {
+        "lat": 40.71922,
+        "lon": -73.98806,
+        "median_price": 138.0,
+        "n": 907
+      },
+      "Marble Hill": {
+        "lat": 40.87579,
+        "lon": -73.91109,
+        "median_price": 76.5,
+        "n": 12
+      },
+      "Midtown": {
+        "lat": 40.75408,
+        "lon": -73.97431,
+        "median_price": 208.5,
+        "n": 1526
+      },
+      "Morningside Heights": {
+        "lat": 40.80738,
+        "lon": -73.96141,
+        "median_price": 98.0,
+        "n": 345
+      },
+      "Murray Hill": {
+        "lat": 40.74774,
+        "lon": -73.97593,
+        "median_price": 190.0,
+        "n": 482
+      },
+      "NoHo": {
+        "lat": 40.72683,
+        "lon": -73.993,
+        "median_price": 250.0,
+        "n": 77
+      },
+      "Nolita": {
+        "lat": 40.72218,
+        "lon": -73.99498,
+        "median_price": 175.5,
+        "n": 250
+      },
+      "Roosevelt Island": {
+        "lat": 40.76224,
+        "lon": -73.94898,
+        "median_price": 80.0,
+        "n": 76
+      },
+      "SoHo": {
+        "lat": 40.72489,
+        "lon": -74.00195,
+        "median_price": 195.0,
+        "n": 350
+      },
+      "Stuyvesant Town": {
+        "lat": 40.73181,
+        "lon": -73.97827,
+        "median_price": 112.5,
+        "n": 36
+      },
+      "Theater District": {
+        "lat": 40.76,
+        "lon": -73.98574,
+        "median_price": 189.0,
+        "n": 285
+      },
+      "Tribeca": {
+        "lat": 40.71778,
+        "lon": -74.00694,
+        "median_price": 282.0,
+        "n": 165
+      },
+      "Two Bridges": {
+        "lat": 40.71173,
+        "lon": -73.99563,
+        "median_price": 109.5,
+        "n": 72
+      },
+      "Upper East Side": {
+        "lat": 40.77296,
+        "lon": -73.954,
+        "median_price": 149.0,
+        "n": 1785
+      },
+      "Upper West Side": {
+        "lat": 40.78866,
+        "lon": -73.97368,
+        "median_price": 150.0,
+        "n": 1948
+      },
+      "Washington Heights": {
+        "lat": 40.84444,
+        "lon": -73.93911,
+        "median_price": 72.0,
+        "n": 899
+      },
+      "West Village": {
+        "lat": 40.73419,
+        "lon": -74.00392,
+        "median_price": 200.0,
+        "n": 754
+      }
+    },
+    "Queens": {
+      "Arverne": {
+        "lat": 40.59101,
+        "lon": -73.79499,
+        "median_price": 122.5,
+        "n": 76
+      },
+      "Astoria": {
+        "lat": 40.76445,
+        "lon": -73.92019,
+        "median_price": 85.0,
+        "n": 896
+      },
+      "Bay Terrace": {
+        "lat": 40.77983,
+        "lon": -73.78167,
+        "median_price": 141.5,
+        "n": 6
+      },
+      "Bayside": {
+        "lat": 40.7601,
+        "lon": -73.76908,
+        "median_price": 62.5,
+        "n": 38
+      },
+      "Bayswater": {
+        "lat": 40.60628,
+        "lon": -73.76451,
+        "median_price": 70.0,
+        "n": 17
+      },
+      "Belle Harbor": {
+        "lat": 40.57573,
+        "lon": -73.84833,
+        "median_price": 155.0,
+        "n": 8
+      },
+      "Bellerose": {
+        "lat": 40.73157,
+        "lon": -73.72518,
+        "median_price": 85.0,
+        "n": 14
+      },
+      "Breezy Point": {
+        "lat": 40.56568,
+        "lon": -73.86994,
+        "median_price": 195.0,
+        "n": 3
+      },
+      "Briarwood": {
+        "lat": 40.70998,
+        "lon": -73.81468,
+        "median_price": 71.5,
+        "n": 56
+      },
+      "Cambria Heights": {
+        "lat": 40.69244,
+        "lon": -73.73457,
+        "median_price": 60.0,
+        "n": 26
+      },
+      "College Point": {
+        "lat": 40.78497,
+        "lon": -73.84392,
+        "median_price": 60.0,
+        "n": 19
+      },
+      "Corona": {
+        "lat": 40.74177,
+        "lon": -73.86307,
+        "median_price": 40.0,
+        "n": 64
+      },
+      "Ditmars Steinway": {
+        "lat": 40.77487,
+        "lon": -73.91021,
+        "median_price": 79.0,
+        "n": 309
+      },
+      "Douglaston": {
+        "lat": 40.75683,
+        "lon": -73.73371,
+        "median_price": 65.0,
+        "n": 8
+      },
+      "East Elmhurst": {
+        "lat": 40.76275,
+        "lon": -73.87712,
+        "median_price": 60.0,
+        "n": 185
+      },
+      "Edgemere": {
+        "lat": 40.59517,
+        "lon": -73.77339,
+        "median_price": 65.0,
+        "n": 11
+      },
+      "Elmhurst": {
+        "lat": 40.74038,
+        "lon": -73.87776,
+        "median_price": 59.0,
+        "n": 237
+      },
+      "Far Rockaway": {
+        "lat": 40.59707,
+        "lon": -73.75524,
+        "median_price": 63.0,
+        "n": 29
+      },
+      "Flushing": {
+        "lat": 40.75612,
+        "lon": -73.82181,
+        "median_price": 65.0,
+        "n": 425
+      },
+      "Forest Hills": {
+        "lat": 40.72,
+        "lon": -73.84942,
+        "median_price": 80.0,
+        "n": 143
+      },
+      "Fresh Meadows": {
+        "lat": 40.7386,
+        "lon": -73.79057,
+        "median_price": 72.0,
+        "n": 32
+      },
+      "Glendale": {
+        "lat": 40.70087,
+        "lon": -73.89356,
+        "median_price": 84.0,
+        "n": 54
+      },
+      "Hollis": {
+        "lat": 40.71488,
+        "lon": -73.76722,
+        "median_price": 77.5,
+        "n": 14
+      },
+      "Holliswood": {
+        "lat": 40.72373,
+        "lon": -73.77068,
+        "median_price": 112.5,
+        "n": 4
+      },
+      "Howard Beach": {
+        "lat": 40.66182,
+        "lon": -73.84704,
+        "median_price": 100.0,
+        "n": 20
+      },
+      "Jackson Heights": {
+        "lat": 40.75158,
+        "lon": -73.88289,
+        "median_price": 68.5,
+        "n": 186
+      },
+      "Jamaica": {
+        "lat": 40.68462,
+        "lon": -73.78541,
+        "median_price": 70.0,
+        "n": 231
+      },
+      "Jamaica Estates": {
+        "lat": 40.71894,
+        "lon": -73.78849,
+        "median_price": 135.0,
+        "n": 19
+      },
+      "Jamaica Hills": {
+        "lat": 40.71312,
+        "lon": -73.79774,
+        "median_price": 83.5,
+        "n": 8
+      },
+      "Kew Gardens": {
+        "lat": 40.70832,
+        "lon": -73.82999,
+        "median_price": 67.5,
+        "n": 32
+      },
+      "Kew Gardens Hills": {
+        "lat": 40.72463,
+        "lon": -73.81918,
+        "median_price": 92.5,
+        "n": 26
+      },
+      "Laurelton": {
+        "lat": 40.67347,
+        "lon": -73.74625,
+        "median_price": 75.0,
+        "n": 18
+      },
+      "Little Neck": {
+        "lat": 40.76212,
+        "lon": -73.72956,
+        "median_price": 50.0,
+        "n": 5
+      },
+      "Long Island City": {
+        "lat": 40.75265,
+        "lon": -73.93755,
+        "median_price": 99.0,
+        "n": 535
+      },
+      "Maspeth": {
+        "lat": 40.73121,
+        "lon": -73.89969,
+        "median_price": 65.0,
+        "n": 110
+      },
+      "Middle Village": {
+        "lat": 40.71576,
+        "lon": -73.87627,
+        "median_price": 99.0,
+        "n": 31
+      },
+      "Neponsit": {
+        "lat": 40.57043,
+        "lon": -73.85822,
+        "median_price": 274.0,
+        "n": 3
+      },
+      "Ozone Park": {
+        "lat": 40.68223,
+        "lon": -73.84697,
+        "median_price": 75.0,
+        "n": 62
+      },
+      "Queens Village": {
+        "lat": 40.71306,
+        "lon": -73.7435,
+        "median_price": 75.0,
+        "n": 60
+      },
+      "Rego Park": {
+        "lat": 40.7272,
+        "lon": -73.86062,
+        "median_price": 67.0,
+        "n": 106
+      },
+      "Richmond Hill": {
+        "lat": 40.69446,
+        "lon": -73.82895,
+        "median_price": 65.0,
+        "n": 94
+      },
+      "Ridgewood": {
+        "lat": 40.70443,
+        "lon": -73.90651,
+        "median_price": 60.0,
+        "n": 423
+      },
+      "Rockaway Beach": {
+        "lat": 40.58765,
+        "lon": -73.8137,
+        "median_price": 125.0,
+        "n": 56
+      },
+      "Rosedale": {
+        "lat": 40.65792,
+        "lon": -73.73432,
+        "median_price": 65.0,
+        "n": 59
+      },
+      "South Ozone Park": {
+        "lat": 40.67265,
+        "lon": -73.79678,
+        "median_price": 69.0,
+        "n": 40
+      },
+      "Springfield Gardens": {
+        "lat": 40.66509,
+        "lon": -73.76345,
+        "median_price": 80.0,
+        "n": 85
+      },
+      "St. Albans": {
+        "lat": 40.69529,
+        "lon": -73.76237,
+        "median_price": 61.5,
+        "n": 76
+      },
+      "Sunnyside": {
+        "lat": 40.74269,
+        "lon": -73.9206,
+        "median_price": 75.0,
+        "n": 363
+      },
+      "Whitestone": {
+        "lat": 40.78236,
+        "lon": -73.82005,
+        "median_price": 49.0,
+        "n": 11
+      },
+      "Woodhaven": {
+        "lat": 40.69149,
+        "lon": -73.85983,
+        "median_price": 52.0,
+        "n": 88
+      },
+      "Woodside": {
+        "lat": 40.74461,
+        "lon": -73.90304,
+        "median_price": 60.0,
+        "n": 235
+      }
+    },
+    "Staten Island": {
+      "Arden Heights": {
+        "lat": 40.55309,
+        "lon": -74.17944,
+        "median_price": 72.5,
+        "n": 4
+      },
+      "Arrochar": {
+        "lat": 40.59372,
+        "lon": -74.07205,
+        "median_price": 65.0,
+        "n": 21
+      },
+      "Bay Terrace, Staten Island": {
+        "lat": 40.55143,
+        "lon": -74.1405,
+        "median_price": 102.5,
+        "n": 2
+      },
+      "Bull's Head": {
+        "lat": 40.59885,
+        "lon": -74.16437,
+        "median_price": 45.0,
+        "n": 6
+      },
+      "Castleton Corners": {
+        "lat": 40.61713,
+        "lon": -74.12215,
+        "median_price": 107.5,
+        "n": 4
+      },
+      "Clifton": {
+        "lat": 40.61706,
+        "lon": -74.08513,
+        "median_price": 75.0,
+        "n": 15
+      },
+      "Concord": {
+        "lat": 40.6022,
+        "lon": -74.08688,
+        "median_price": 34.5,
+        "n": 26
+      },
+      "Dongan Hills": {
+        "lat": 40.57882,
+        "lon": -74.09182,
+        "median_price": 70.0,
+        "n": 7
+      },
+      "Eltingville": {
+        "lat": 40.54106,
+        "lon": -74.15389,
+        "median_price": 70.0,
+        "n": 3
+      },
+      "Emerson Hill": {
+        "lat": 40.60642,
+        "lon": -74.12819,
+        "median_price": 78.0,
+        "n": 5
+      },
+      "Fort Wadsworth": {
+        "lat": 40.59546,
+        "lon": -74.06092,
+        "median_price": 800.0,
+        "n": 1
+      },
+      "Graniteville": {
+        "lat": 40.62301,
+        "lon": -74.16558,
+        "median_price": 71.0,
+        "n": 3
+      },
+      "Grant City": {
+        "lat": 40.57868,
+        "lon": -74.10945,
+        "median_price": 66.0,
+        "n": 6
+      },
+      "Great Kills": {
+        "lat": 40.54892,
+        "lon": -74.14261,
+        "median_price": 83.0,
+        "n": 10
+      },
+      "Grymes Hill": {
+        "lat": 40.6157,
+        "lon": -74.09132,
+        "median_price": 125.0,
+        "n": 7
+      },
+      "Howland Hook": {
+        "lat": 40.63129,
+        "lon": -74.17262,
+        "median_price": 100.0,
+        "n": 2
+      },
+      "Huguenot": {
+        "lat": 40.53982,
+        "lon": -74.17258,
+        "median_price": 100.0,
+        "n": 3
+      },
+      "Lighthouse Hill": {
+        "lat": 40.5768,
+        "lon": -74.13456,
+        "median_price": 157.5,
+        "n": 2
+      },
+      "Mariners Harbor": {
+        "lat": 40.63355,
+        "lon": -74.15895,
+        "median_price": 71.5,
+        "n": 8
+      },
+      "Midland Beach": {
+        "lat": 40.57457,
+        "lon": -74.09522,
+        "median_price": 95.0,
+        "n": 6
+      },
+      "New Brighton": {
+        "lat": 40.64393,
+        "lon": -74.0929,
+        "median_price": 55.0,
+        "n": 5
+      },
+      "New Dorp": {
+        "lat": 40.57044,
+        "lon": -74.11747,
+        "median_price": 57.0,
+        "n": 1
+      },
+      "New Dorp Beach": {
+        "lat": 40.56506,
+        "lon": -74.1024,
+        "median_price": 40.0,
+        "n": 5
+      },
+      "New Springville": {
+        "lat": 40.5831,
+        "lon": -74.1576,
+        "median_price": 63.0,
+        "n": 8
+      },
+      "Oakwood": {
+        "lat": 40.56033,
+        "lon": -74.11992,
+        "median_price": 65.0,
+        "n": 5
+      },
+      "Port Richmond": {
+        "lat": 40.63408,
+        "lon": -74.13354,
+        "median_price": 50.0,
+        "n": 9
+      },
+      "Prince's Bay": {
+        "lat": 40.52293,
+        "lon": -74.20941,
+        "median_price": 118.0,
+        "n": 3
+      },
+      "Randall Manor": {
+        "lat": 40.63114,
+        "lon": -74.12525,
+        "median_price": 77.0,
+        "n": 18
+      },
+      "Richmondtown": {
+        "lat": 40.57093,
+        "lon": -74.12429,
+        "median_price": 78.0,
+        "n": 1
+      },
+      "Rosebank": {
+        "lat": 40.61353,
+        "lon": -74.06724,
+        "median_price": 100.0,
+        "n": 7
+      },
+      "Rossville": {
+        "lat": 40.5479,
+        "lon": -74.21017,
+        "median_price": 75.0,
+        "n": 1
+      },
+      "Shore Acres": {
+        "lat": 40.60809,
+        "lon": -74.06679,
+        "median_price": 100.0,
+        "n": 7
+      },
+      "Silver Lake": {
+        "lat": 40.6234,
+        "lon": -74.0965,
+        "median_price": 70.0,
+        "n": 2
+      },
+      "South Beach": {
+        "lat": 40.5914,
+        "lon": -74.0872,
+        "median_price": 67.5,
+        "n": 8
+      },
+      "St. George": {
+        "lat": 40.64417,
+        "lon": -74.0816,
+        "median_price": 96.0,
+        "n": 48
+      },
+      "Stapleton": {
+        "lat": 40.63443,
+        "lon": -74.07789,
+        "median_price": 75.0,
+        "n": 27
+      },
+      "Todt Hill": {
+        "lat": 40.60958,
+        "lon": -74.11178,
+        "median_price": 98.5,
+        "n": 4
+      },
+      "Tompkinsville": {
+        "lat": 40.63384,
+        "lon": -74.08569,
+        "median_price": 62.5,
+        "n": 42
+      },
+      "Tottenville": {
+        "lat": 40.50868,
+        "lon": -74.23986,
+        "median_price": 100.0,
+        "n": 7
+      },
+      "West Brighton": {
+        "lat": 40.63222,
+        "lon": -74.1145,
+        "median_price": 69.5,
+        "n": 18
+      },
+      "Westerleigh": {
+        "lat": 40.61389,
+        "lon": -74.13367,
+        "median_price": 71.5,
+        "n": 2
+      },
+      "Willowbrook": {
+        "lat": 40.59886,
+        "lon": -74.13217,
+        "median_price": 249.0,
+        "n": 1
+      },
+      "Woodrow": {
+        "lat": 40.53884,
+        "lon": -74.19826,
+        "median_price": 700.0,
+        "n": 1
+      }
+    }
+  },
+  "room_types": [
+    "Entire home/apt",
+    "Private room",
+    "Shared room"
+  ],
+  "defaults": {
+    "minimum_nights": 3,
+    "number_of_reviews": 5,
+    "reviews_per_month": 0.38,
+    "calculated_host_listings_count": 1,
+    "availability_365": 44
+  }
+}

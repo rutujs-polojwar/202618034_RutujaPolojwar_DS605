@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.venv/
+venv/
+.DS_Store
+.pytest_cache/
+# NOTE: do NOT ignore models/ - the deployed app needs models/*.joblib and models/metadata.json

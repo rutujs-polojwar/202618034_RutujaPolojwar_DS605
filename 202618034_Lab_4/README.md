@@ -86,6 +86,7 @@ The two tree ensembles clearly beat the linear models; Hist Gradient Boosting an
 ### Application screenshots
 
 ![](images/app_screenshot_estimate.png)
+![](model_performance.png)
 
 ## 4. Limitations
 
